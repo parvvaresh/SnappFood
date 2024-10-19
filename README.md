@@ -1,14 +1,11 @@
-Here’s the updated version of the README with the new comparison information:
-
----
-
 # Sentiment Analysis Flask App
 
 This is a Flask-based web application for Persian sentiment analysis. The app utilizes a custom pre-processing pipeline to clean and prepare input text for a sentiment analysis model, which classifies the input as either positive or negative. The model is deployed in a Docker container for consistency across environments.
 
 ## Features
 
-- **Custom Pre-processing Pipeline**: Includes punctuation removal, diacritic removal, normalization, tokenization, stopword removal, and lemmatization using the `hazm` library.
+- **Custom Pre-processing Pipeline**: Includes punctuation removal, diacritic removal, normalization, tokenization, stopword removal, and lemmatization using the `hazm` library for classical machine learning models.
+- **TensorFlow Pre-processing Pipeline**: Uses TensorFlow's built-in pre-processing for the LSTM model.
 - **Real-time Sentiment Prediction**: Users can input Persian text to receive instant sentiment predictions.
 - **Flask Web Framework**: The application uses Flask to handle HTTP requests and render the web interface.
 - **Dockerized Application**: The app is containerized with Docker, ensuring that it can run reliably in any environment.
@@ -38,8 +35,8 @@ As the table shows, the LSTM model achieved the best performance, primarily due 
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd <repository-folder>
+git clone https://github.com/parvvaresh/SnappFood
+cd SnappFood
 ```
 
 ### 2. Install Dependencies
@@ -92,9 +89,11 @@ To ensure that the application runs in any environment, it is containerized usin
 2. Enter your Persian text and click the submit button.
 3. The model will classify the input text as either positive or negative, displaying the result on the page.
 
-## Custom Pre-processing Pipeline
+## Custom Pre-processing Pipelines
 
-The app uses a custom pre-processing pipeline implemented in Python. The pipeline performs the following steps:
+### Classical Machine Learning Models
+
+For classical models, the app uses a custom pre-processing pipeline implemented in the `PreProcess.py` module. This pipeline performs the following steps:
 
 - **Punctuation Removal**: Removes both English and Persian punctuations.
 - **Diacritics Removal**: Strips Arabic diacritics such as Tashdid, Fatha, and Sukun.
@@ -103,6 +102,10 @@ The app uses a custom pre-processing pipeline implemented in Python. The pipelin
 - **Tokenization**: Splits the text into tokens (words).
 - **Stopword Removal**: Filters out common Persian stopwords using the `hazm` library.
 - **Lemmatization**: Converts words to their base form using the `hazm` Lemmatizer.
+
+### LSTM Model
+
+For the LSTM model, TensorFlow's built-in pre-processing pipeline is used. This includes tokenization, padding, and sequence vectorization, allowing the model to handle sequential dependencies in the text effectively.
 
 ## Project Structure
 
@@ -145,12 +148,11 @@ The app uses a custom pre-processing pipeline implemented in Python. The pipelin
     └── index.html                   # Main HTML file for the web interface
 
 10 directories, 37 files
-
 ```
 
 ## Model Prediction
 
-The prediction logic is handled by the `pipeline_predict.py` module. It processes the user input using the custom pre-processing pipeline and then passes it to the pre-trained sentiment analysis model to predict whether the input sentiment is positive or negative.
+The prediction logic is handled by the `pipeline_predict.py` module. It processes the user input using the custom pre-processing pipeline (for classical models) or TensorFlow's pre-processing pipeline (for the LSTM model) and then passes it to the pre-trained sentiment analysis model to predict whether the input sentiment is positive or negative.
 
 ## Requirements
 
@@ -159,8 +161,6 @@ The prediction logic is handled by the `pipeline_predict.py` module. It processe
 - hazm
 - TensorFlow or any other machine learning framework you use for your model
 
-
-
 ## License
 
 This project is licensed under the MIT License.
@@ -168,4 +168,4 @@ This project is licensed under the MIT License.
 ## Contact
 
 For any inquiries, feel free to contact the project maintainer at [parvvaresh@gmail.com].
-
+```
