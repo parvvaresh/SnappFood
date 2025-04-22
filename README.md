@@ -161,6 +161,12 @@ The prediction logic is handled by the `pipeline_predict.py` module. It processe
 - hazm
 - TensorFlow or any other machine learning framework you use for your model
 
+
+
+## Web App
+
+![Alt text](/home/reza/dev/SnappFood/assets/flaskkapp.png)
+
 ## License
 
 This project is licensed under the MIT License.
