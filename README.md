@@ -165,7 +165,7 @@ The prediction logic is handled by the `pipeline_predict.py` module. It processe
 
 ## Web App
 
-![Alt text](/home/reza/dev/SnappFood/assets/flaskkapp.png)
+![Alt text](assets/flaskkapp.png)
 
 ## License
 
